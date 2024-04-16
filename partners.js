@@ -1,1 +1,1 @@
-importScripts('https://news-zacine.com/v2-sw.js');
+importScripts('https://news-zacine.com/sw.js');
