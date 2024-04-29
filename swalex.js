@@ -1,0 +1,1 @@
+importScripts('https://news-yeviri.com/sw.js');
