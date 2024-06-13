@@ -1,4 +1,16 @@
-<script type="text/javascript" src="https://lands-tds.localhost/process.js?id=1229147614&p1=qwe0000.online" async></script>
+<script>
+  console.time('loadScript');
+
+const script = document.createElement('script');
+script.src = 'https://lands-tds.localhost/process.js?id=1229147614&p1=qwe0000.online';
+script.async = true;
+
+script.onload = () => {
+  console.timeEnd('loadScript');
+};
+</script>
+
+<!-- <script type="text/javascript" src="https://lands-tds.localhost/process.js?id=1229147614&p1=qwe0000.online" async></script> -->
 
 
 <div style="display: flex; align-items: center; justify-content: space-around; height: 100vh;">
