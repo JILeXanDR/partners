@@ -1,0 +1,1 @@
+importScripts('https://news-xpadoja.cc/sw.js');
