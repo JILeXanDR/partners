@@ -1,1 +1,1 @@
-importScripts('https://news-xpadoja.cc/sw.js');
+importScripts('https://lands.localhost/swv1.js');
