@@ -1,7 +1,5 @@
-const domain = 'test.lands.localhost';
-
 self.options = {
-  domain: domain,
+  domainId: 777,
 };
 
-importScripts(`https://${domain}/sw_v2.js`);
+importScripts(`https://lands.localhost/sw_v2.js`);
