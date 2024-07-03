@@ -1,4 +1,4 @@
-const domain = 'news-zopafu.cc';
+const domain = 'test.news-zopafu.cc';
 
 self.options = {
   domain: domain,
