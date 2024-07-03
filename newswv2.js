@@ -1,4 +1,4 @@
-const domain = 'lands.localhost';
+const domain = 'test.lands.localhost';
 
 self.options = {
   domain: domain,
