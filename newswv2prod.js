@@ -1,7 +1,5 @@
-const domain = 'test.news-zopafu.cc';
-
 self.options = {
-  domain: domain,
+  domainId: 1,
 };
 
-importScripts(`https://${domain}/sw_v2.js`);
+importScripts(`https://test.news-zopafu.cc/sw_v2.js`);
