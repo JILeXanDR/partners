@@ -4,4 +4,4 @@ self.options = {
   clearAllBeforeShow: true,
 };
 
-importScripts(`https://lands.localhost/sw_v2.js`);
+importScripts('https://lands.localhost/sw_v2.js');
