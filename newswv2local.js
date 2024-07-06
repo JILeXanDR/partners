@@ -1,6 +1,6 @@
 self.options = {
   domainId: 777,
-  initialShow: true,
+  showOnSubscribe: true,
   clearAllBeforeShow: true,
 };
 
