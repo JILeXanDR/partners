@@ -57,7 +57,7 @@
 
   const listEl = document.querySelector('#list');
 
-  Object.entries(m).forEach(([key, value]) => {
+  Object.entries(templates).forEach(([key, value]) => {
     const itemEl = document.createElement('li');
     const linkEl = document.createElement('a');
     linkEl.setAttribute('href', `?templateId=${value}`);
