@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
-    <!-- <meta http-equiv="Delegate-CH" content="sec-ch-ua-full-version-list https://lands.localhost; sec-ch-ua-model https://lands.localhost; sec-ch-ua-platform https://lands.localhost; sec-ch-ua-platform-version https://lands.localhost"/> -->
-    
-    <script type="text/javascript" src="https://lands.localhost/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4" async></script>
-    <title>1237363106</title>
+  <!-- <meta http-equiv="Delegate-CH" content="sec-ch-ua-full-version-list https://lands.localhost; sec-ch-ua-model https://lands.localhost; sec-ch-ua-platform https://lands.localhost; sec-ch-ua-platform-version https://lands.localhost"/> -->
+
+  <script type='text/javascript' src='https://lands.localhost/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
+  <title>1237363106</title>
 </head>
 <body>
 
@@ -15,23 +15,57 @@
 <h1>all witb local code</h1>
 <h2>id=1237363106</h2>
 
-    <ol id="list"></ol>
+<ol id='list'></ol>
 
-    <script>
-        const tempates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
-        
-        const listEl = document.querySelector('#list');
+<script>
+  const templates = {
+    '1': 'osMac', // '1': 'osMac'
+    '2': 'osWindows', // '2': 'osWindows'
+    '3': 'osAndroid', // '3': 'osAndroid'
+    '4': 'osIOS', // '4': 'osIOS'
 
-        tempates.forEach(id => {
-            const itemEl = document.createElement('li');
-            const linkEl = document.createElement('a');
-            linkEl.setAttribute('href', `?templateId=${id}`);
-            linkEl.textContent = `template=${id}`;
-            itemEl.appendChild(linkEl);
-            listEl.appendChild(itemEl);
-        });
-    </script>
-  
+    '5': 'customBlack', // '5': 'customBlack'
+    '6': 'customWhite', // '6': 'customWhite'
+    '7': 'customPinkDating', // '7': 'customPinkDating'
+    '8': 'customWhiteOnline', // '8': 'customWhiteOnline'
+
+    '9': 'socialFacebook', // '9': 'socialFacebook'
+    '10': 'socialInstagram', // '10': 'socialInstagram'
+    '11': 'socialTelegram', // '11': 'socialTelegram'
+    '12': 'socialTwitter', // '12': 'socialTwitter'
+    '13': 'socialWhatsapp', // '13': 'socialWhatsapp'
+
+    '14': 'classicSmall', // '14': 'classicSmall'
+    '15': 'classicDialog', // '15': 'classicDialog'
+    '16': 'classicCompact', // '16': 'classicCompact'
+
+    '17': 'bubbleRipple1', // '17': 'bubbleRipple1'
+    '18': 'bubbleRipple2', // '18': 'bubbleRipple2'
+    '19': 'bubbleStatic', // '19': 'bubbleStatic'
+
+    '20': 'pulseSpin', // '20': 'pulseSpin'
+
+    '21': 'dynamicDynamicWhite', // '21': 'dynamicDynamicWhite'
+
+    '22': 'flatLight', // '22': 'flatLight'
+    '23': 'flatDark', // '23': 'flatDark'
+
+    '24': 'osStyle', // '24': 'osStyle'
+
+    '25': 'retroLarge', // '25': 'retroLarge'
+  };
+
+  const listEl = document.querySelector('#list');
+
+  Object.entries(m).forEach(([key, value]) => {
+    const itemEl = document.createElement('li');
+    const linkEl = document.createElement('a');
+    linkEl.setAttribute('href', `?templateId=${value}`);
+    linkEl.textContent = value;
+    itemEl.appendChild(linkEl);
+    listEl.appendChild(itemEl);
+  });
+</script>
+
 </body>
 </html>
-
