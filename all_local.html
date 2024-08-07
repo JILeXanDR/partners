@@ -15,10 +15,23 @@
 <h1>all witb local code</h1>
 <h2>id=1237363106</h2>
 
-    <ol>
+    <ol id="list">
         <li><a href="?templateId=1">1</a></li>
         <li><a href="?templateId=2">2</a></li>
     </ol>
+
+    <script>
+        const listEl = document.querySelector('#list');
+
+        [1,2,3,4,5,6].forEach(id => {
+            const itemEl = document.createElement('li');
+            const linkEl = document.createElement('a');
+            linkEl.setAttribute('href', `?templateId=${id}`);
+            linkEl.textContent = `template=${id}`;
+            itemEl.appendChild(linkEl);
+            listEl.appendChild(itemEl);
+        });
+    </script>
   
 </body>
 </html>
