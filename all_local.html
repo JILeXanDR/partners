@@ -15,15 +15,14 @@
 <h1>all witb local code</h1>
 <h2>id=1237363106</h2>
 
-    <ol id="list">
-        <li><a href="?templateId=1">1</a></li>
-        <li><a href="?templateId=2">2</a></li>
-    </ol>
+    <ol id="list"></ol>
 
     <script>
+        const tempates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+        
         const listEl = document.querySelector('#list');
 
-        [1,2,3,4,5,6].forEach(id => {
+        tempates.forEach(id => {
             const itemEl = document.createElement('li');
             const linkEl = document.createElement('a');
             linkEl.setAttribute('href', `?templateId=${id}`);
