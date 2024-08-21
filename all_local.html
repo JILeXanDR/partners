@@ -3,6 +3,7 @@
 <head>
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src="https://unpkg.com/vue@next"></script>
   <script type='text/javascript' src='https://lands.localhost/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
   <title>1237363106</title>
   <style>
@@ -55,86 +56,76 @@
 </head>
 <body>
 
-<h1>All with local code</h1>
-<h2>id=1237363106</h2>
+<div id="app">
+  <h1>All with local code</h1>
+  <h2>id=1237363106</h2>
 
-<ol id='list'></ol>
+  <ol>
+    <li v-for="(value, key) in templates" :key="key">
+      <a :href="generateUrl(value)">{{ value }}</a>
+    </li>
+  </ol>
 
-<div id="position-block">
-  <!-- Position links will be injected here -->
+  <div id="position-block">
+    <a v-for="position in positions" 
+       :href="generateUrlWithPosition(position)" 
+       :class="['position-link', position]" 
+       :key="position">
+      Position: {{ position }}
+    </a>
+  </div>
 </div>
 
 <script>
-  const templates = {
-    '': 'DEFAULT',
-    
-    '1': 'osMac',
-    '2': 'osWindows',
-    '3': 'osAndroid',
-    '4': 'osIOS',
-
-    '5': 'customBlack',
-    '6': 'customWhite',
-    '7': 'customPinkDating',
-    '8': 'customWhiteOnline',
-
-    '9': 'socialFacebook',
-    '10': 'socialInstagram',
-    '11': 'socialTelegram',
-    '12': 'socialTwitter',
-    '13': 'socialWhatsapp',
-
-    '14': 'classicSmall',
-    '15': 'classicDialog',
-    '16': 'classicCompact',
-
-    '17': 'bubbleRipple1',
-    '18': 'bubbleRipple2',
-    '19': 'bubbleStatic',
-
-    '20': 'pulseSpin',
-
-    '21': 'dynamicDynamicWhite',
-
-    '22': 'flatLight',
-    '23': 'flatDark',
-
-    '24': 'osStyle',
-
-    '25': 'retroLarge',
-  };
-
-  const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
-
-  const listEl = document.querySelector('#list');
-  const positionBlockEl = document.querySelector('#position-block');
-
-  Object.entries(templates).forEach(([key, value]) => {
-    const itemEl = document.createElement('li');
-    const linkEl = document.createElement('a');
-
-    const currentUrl = new URL(location.href);
-    currentUrl.searchParams.set('templateId', value);
-
-    linkEl.setAttribute('href', currentUrl.toString());
-    linkEl.textContent = value;
-    itemEl.appendChild(linkEl);
-    listEl.appendChild(itemEl);
+  const app = Vue.createApp({
+    data() {
+      return {
+        templates: {
+          '': 'DEFAULT',
+          '1': 'osMac',
+          '2': 'osWindows',
+          '3': 'osAndroid',
+          '4': 'osIOS',
+          '5': 'customBlack',
+          '6': 'customWhite',
+          '7': 'customPinkDating',
+          '8': 'customWhiteOnline',
+          '9': 'socialFacebook',
+          '10': 'socialInstagram',
+          '11': 'socialTelegram',
+          '12': 'socialTwitter',
+          '13': 'socialWhatsapp',
+          '14': 'classicSmall',
+          '15': 'classicDialog',
+          '16': 'classicCompact',
+          '17': 'bubbleRipple1',
+          '18': 'bubbleRipple2',
+          '19': 'bubbleStatic',
+          '20': 'pulseSpin',
+          '21': 'dynamicDynamicWhite',
+          '22': 'flatLight',
+          '23': 'flatDark',
+          '24': 'osStyle',
+          '25': 'retroLarge'
+        },
+        positions: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+      };
+    },
+    methods: {
+      generateUrl(templateId) {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('templateId', templateId);
+        return currentUrl.toString();
+      },
+      generateUrlWithPosition(position) {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('position', position);
+        return currentUrl.toString();
+      }
+    }
   });
 
-  // Add each position link to the grid block
-  positions.forEach((position) => {
-    const linkEl = document.createElement('a');
-    const currentUrl = new URL(location.href);
-
-    currentUrl.searchParams.set('position', position);
-
-    linkEl.setAttribute('href', currentUrl.toString());
-    linkEl.classList.add('position-link', position);
-    linkEl.textContent = `Position: ${position}`;
-
-    positionBlockEl.appendChild(linkEl);
-  });
+  app.mount('#app');
 </script>
 
 </body>
