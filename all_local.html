@@ -3,11 +3,54 @@
 <head>
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
-  <!-- <meta http-equiv="Delegate-CH" content="sec-ch-ua-full-version-list https://lands.localhost; sec-ch-ua-model https://lands.localhost; sec-ch-ua-platform https://lands.localhost; sec-ch-ua-platform-version https://lands.localhost"/> -->
-
-  <script type='text/javascript' src='https://lands.localhost/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
   <title>1237363106</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #position-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      width: 200px;
+      height: 200px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+    }
+
+    .position-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .position-link:hover {
+      background-color: #e0e0e0;
+    }
+
+    .top-left {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .top-right {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+
+    .bottom-left {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .bottom-right {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,6 +58,10 @@
 <h2>id=1237363106</h2>
 
 <ol id='list'></ol>
+
+<div id="position-block">
+  <!-- Position links will be injected here -->
+</div>
 
 <script>
   const templates = {
@@ -57,6 +104,7 @@
   const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
 
   const listEl = document.querySelector('#list');
+  const positionBlockEl = document.querySelector('#position-block');
 
   Object.entries(templates).forEach(([key, value]) => {
     const itemEl = document.createElement('li');
@@ -64,25 +112,25 @@
 
     const currentUrl = new URL(location.href);
     currentUrl.searchParams.set('templateId', value);
-    
+
     linkEl.setAttribute('href', currentUrl.toString());
     linkEl.textContent = value;
     itemEl.appendChild(linkEl);
     listEl.appendChild(itemEl);
   });
 
-  // Add each position to the list as well
+  // Add each position link to the grid block
   positions.forEach((position) => {
-    const itemEl = document.createElement('li');
     const linkEl = document.createElement('a');
-
     const currentUrl = new URL(location.href);
+
     currentUrl.searchParams.set('position', position);
 
     linkEl.setAttribute('href', currentUrl.toString());
+    linkEl.classList.add('position-link', position);
     linkEl.textContent = `Position: ${position}`;
-    itemEl.appendChild(linkEl);
-    listEl.appendChild(itemEl);
+
+    positionBlockEl.appendChild(linkEl);
   });
 </script>
 
