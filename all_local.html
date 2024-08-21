@@ -55,15 +55,28 @@
     '25': 'retroLarge', // '25': 'retroLarge'
   };
 
+  const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+
   const listEl = document.querySelector('#list');
 
   Object.entries(templates).forEach(([key, value]) => {
     const itemEl = document.createElement('li');
     const linkEl = document.createElement('a');
-    linkEl.setAttribute('href', `?templateId=${value}`);
+
+    const currentUrl = new URL(location.href);
+
+    currentUrl.searchParams.set('templateId', value);
+    
+    linkEl.setAttribute('href', u.search);
     linkEl.textContent = value;
     itemEl.appendChild(linkEl);
     listEl.appendChild(itemEl);
+  });
+
+  positions.forEach((position) => {
+      const currentUrl = new URL(location.href);
+      currentUrl.searchParams.set('position', position);
+      console.log(u.search);
   });
 </script>
 
