@@ -67,7 +67,7 @@
 
     currentUrl.searchParams.set('templateId', value);
     
-    linkEl.setAttribute('href', u.search);
+    linkEl.setAttribute('href', currentUrl.toString());
     linkEl.textContent = value;
     itemEl.appendChild(linkEl);
     listEl.appendChild(itemEl);
@@ -76,7 +76,7 @@
   positions.forEach((position) => {
       const currentUrl = new URL(location.href);
       currentUrl.searchParams.set('position', position);
-      console.log(u.search);
+      console.log(currentUrl.toString());
   });
 </script>
 
