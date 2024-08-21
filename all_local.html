@@ -11,48 +11,47 @@
 </head>
 <body>
 
-
-<h1>all witb local code</h1>
+<h1>All with local code</h1>
 <h2>id=1237363106</h2>
 
 <ol id='list'></ol>
 
 <script>
   const templates = {
-    '1': 'osMac', // '1': 'osMac'
-    '2': 'osWindows', // '2': 'osWindows'
-    '3': 'osAndroid', // '3': 'osAndroid'
-    '4': 'osIOS', // '4': 'osIOS'
+    '1': 'osMac',
+    '2': 'osWindows',
+    '3': 'osAndroid',
+    '4': 'osIOS',
 
-    '5': 'customBlack', // '5': 'customBlack'
-    '6': 'customWhite', // '6': 'customWhite'
-    '7': 'customPinkDating', // '7': 'customPinkDating'
-    '8': 'customWhiteOnline', // '8': 'customWhiteOnline'
+    '5': 'customBlack',
+    '6': 'customWhite',
+    '7': 'customPinkDating',
+    '8': 'customWhiteOnline',
 
-    '9': 'socialFacebook', // '9': 'socialFacebook'
-    '10': 'socialInstagram', // '10': 'socialInstagram'
-    '11': 'socialTelegram', // '11': 'socialTelegram'
-    '12': 'socialTwitter', // '12': 'socialTwitter'
-    '13': 'socialWhatsapp', // '13': 'socialWhatsapp'
+    '9': 'socialFacebook',
+    '10': 'socialInstagram',
+    '11': 'socialTelegram',
+    '12': 'socialTwitter',
+    '13': 'socialWhatsapp',
 
-    '14': 'classicSmall', // '14': 'classicSmall'
-    '15': 'classicDialog', // '15': 'classicDialog'
-    '16': 'classicCompact', // '16': 'classicCompact'
+    '14': 'classicSmall',
+    '15': 'classicDialog',
+    '16': 'classicCompact',
 
-    '17': 'bubbleRipple1', // '17': 'bubbleRipple1'
-    '18': 'bubbleRipple2', // '18': 'bubbleRipple2'
-    '19': 'bubbleStatic', // '19': 'bubbleStatic'
+    '17': 'bubbleRipple1',
+    '18': 'bubbleRipple2',
+    '19': 'bubbleStatic',
 
-    '20': 'pulseSpin', // '20': 'pulseSpin'
+    '20': 'pulseSpin',
 
-    '21': 'dynamicDynamicWhite', // '21': 'dynamicDynamicWhite'
+    '21': 'dynamicDynamicWhite',
 
-    '22': 'flatLight', // '22': 'flatLight'
-    '23': 'flatDark', // '23': 'flatDark'
+    '22': 'flatLight',
+    '23': 'flatDark',
 
-    '24': 'osStyle', // '24': 'osStyle'
+    '24': 'osStyle',
 
-    '25': 'retroLarge', // '25': 'retroLarge'
+    '25': 'retroLarge',
   };
 
   const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
@@ -64,7 +63,6 @@
     const linkEl = document.createElement('a');
 
     const currentUrl = new URL(location.href);
-
     currentUrl.searchParams.set('templateId', value);
     
     linkEl.setAttribute('href', currentUrl.toString());
@@ -73,10 +71,18 @@
     listEl.appendChild(itemEl);
   });
 
+  // Add each position to the list as well
   positions.forEach((position) => {
-      const currentUrl = new URL(location.href);
-      currentUrl.searchParams.set('position', position);
-      console.log(currentUrl.toString());
+    const itemEl = document.createElement('li');
+    const linkEl = document.createElement('a');
+
+    const currentUrl = new URL(location.href);
+    currentUrl.searchParams.set('position', position);
+
+    linkEl.setAttribute('href', currentUrl.toString());
+    linkEl.textContent = `Position: ${position}`;
+    itemEl.appendChild(linkEl);
+    listEl.appendChild(itemEl);
   });
 </script>
 
