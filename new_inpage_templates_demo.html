@@ -81,8 +81,8 @@
       <h2>id=1237363106</h2>
       <ol>
         <li v-for="(value, key) in templates" :key="key">
-          <a :href="generateUrl(key)"
-             :class="['template-link', { 'highlight-template': key === currentTemplate }]">
+          <a :href="generateUrl(value)"
+             :class="['template-link', { 'highlight-template': value === currentTemplate }]">
             {{ value }}
           </a>
         </li>
@@ -163,9 +163,9 @@
       };
     },
     methods: {
-      generateUrl(templateId) {
+      generateUrl(templateName) {
         const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set('templateId', templateId);
+        currentUrl.searchParams.set('templateId', templateName);
         return currentUrl.toString();
       },
       generateUrlWithPosition(position) {
