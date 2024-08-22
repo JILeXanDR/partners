@@ -80,7 +80,7 @@
       <h1>All with local code</h1>
       <h2>id=1237363106</h2>
       <ol>
-        <li v-for="(value, key) in templates" :key="key">
+        <li start="0" v-for="(value, key) in templates" :key="key">
           <a :href="generateUrl(value)"
              :class="['template-link', { 'highlight-template': value === currentTemplate }]">
             {{ value }}
