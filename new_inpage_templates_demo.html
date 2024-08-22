@@ -78,7 +78,7 @@
   <div id="content">
     <div id="list-section">
       <h1>Demo for new InPage templates</h1>
-      <h2>subacc=1237363106</h2>
+      <h2>subacc={{ currentSubacc }}</h2>
       <ol start="0">
         <li v-for="(value, key) in templates" :key="key">
           <a :href="generateUrl(value)"
@@ -94,14 +94,9 @@
         <a v-for="position in positions" 
            :href="generateUrlWithPosition(position)" 
            :class="['position-link', { 'highlight': position === currentPosition }]" 
+           @click.prevent="togglePosition(position)" 
            :key="position">
           Position: {{ position }}
-        </a>
-        <a href="#" 
-           v-if="currentPosition" 
-           class="position-link" 
-           @click.prevent="removePosition">
-          Remove Position
         </a>
       </div>
     </div>
@@ -112,9 +107,9 @@
   // Determine the base URL for the script import based on the 'local' query parameter
   const urlParams = new URLSearchParams(window.location.search);
   const isLocal = urlParams.get('local');
-  const subacc = urlParams.get('subacc');
+  const subacc = urlParams.get('subacc') || '1237363106';
   const baseUrl = isLocal ? 'https://lands.localhost' : 'https://news-xxihani.com';
-  const idValue = subacc ? subacc : '1237363106';
+  const idValue = subacc;
 
   // Get current templateId and position from URL
   const currentTemplate = urlParams.get('templateId');
@@ -132,6 +127,7 @@
   const app = Vue.createApp({
     data() {
       return {
+        currentSubacc: subacc,
         currentTemplate,
         currentPosition,
         templates: {
@@ -181,9 +177,13 @@
         currentUrl.searchParams.set('position', position);
         return currentUrl.toString();
       },
-      removePosition() {
+      togglePosition(position) {
         const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.delete('position');
+        if (this.currentPosition === position) {
+          currentUrl.searchParams.delete('position');
+        } else {
+          currentUrl.searchParams.set('position', position);
+        }
         window.location.href = currentUrl.toString();
       }
     }
