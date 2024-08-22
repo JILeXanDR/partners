@@ -53,8 +53,22 @@
       color: #333;
     }
 
-    .position-link:hover {
-      background-color: #e0e0e0;
+    .position-link:hover,
+    .highlight {
+      background-color: #cce5ff;
+      border-color: #004085;
+      color: #004085;
+    }
+
+    .template-link {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .template-link:hover,
+    .highlight-template {
+      font-weight: bold;
+      color: #004085;
     }
   </style>
 </head>
@@ -67,7 +81,10 @@
       <h2>id=1237363106</h2>
       <ol>
         <li v-for="(value, key) in templates" :key="key">
-          <a :href="generateUrl(value)">{{ value }}</a>
+          <a :href="generateUrl(key)"
+             :class="['template-link', { 'highlight-template': key === currentTemplate }]">
+            {{ value }}
+          </a>
         </li>
       </ol>
     </div>
@@ -76,7 +93,7 @@
       <div id="position-block">
         <a v-for="position in positions" 
            :href="generateUrlWithPosition(position)" 
-           :class="['position-link', position]" 
+           :class="['position-link', { 'highlight': position === currentPosition }]" 
            :key="position">
           Position: {{ position }}
         </a>
@@ -86,15 +103,17 @@
 </div>
 
 <script>
-  // Determine the base URL based on the 'local' query parameter
+  // Determine the base URL for the script import based on the 'local' query parameter
   const urlParams = new URLSearchParams(window.location.search);
   const isLocal = urlParams.get('local');
   const baseUrl = isLocal ? 'https://lands.localhost' : 'https://news-xxihani.com';
 
-  // Construct the script URL
-  const scriptUrl = `${baseUrl}/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4`;
+  // Get current templateId and position from URL
+  const currentTemplate = urlParams.get('templateId');
+  const currentPosition = urlParams.get('position');
 
-  // Dynamically create and append the script tag
+  // Dynamically create and append the script tag using baseUrl
+  const scriptUrl = `${baseUrl}/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4`;
   const script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = scriptUrl;
@@ -105,7 +124,8 @@
   const app = Vue.createApp({
     data() {
       return {
-        baseUrl,
+        currentTemplate,
+        currentPosition,
         templates: {
           '0': 'DEFAULT',
           '1': 'os_mac',
@@ -146,13 +166,11 @@
       generateUrl(templateId) {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('templateId', templateId);
-        currentUrl.hostname = this.baseUrl.replace(/^https?:\/\//, '');
         return currentUrl.toString();
       },
       generateUrlWithPosition(position) {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('position', position);
-        currentUrl.hostname = this.baseUrl.replace(/^https?:\/\//, '');
         return currentUrl.toString();
       }
     }
