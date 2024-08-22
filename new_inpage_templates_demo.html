@@ -4,7 +4,7 @@
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <script src="https://unpkg.com/vue@3"></script> <!-- Correct Vue 3 CDN -->
-  <script type='text/javascript' src='https://news-xxihani.com/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
+  <script type='text/javascript' src='https://lands.localhost/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
   <title>1237363106</title>
   <style>
     body {
@@ -61,25 +61,28 @@
 </head>
 <body>
 
-<div id="content">
-  <div id="list-section">
-    <h1>DEMO for new InPage templates</h1>
-    <h2>id=1237363106</h2>
-    <ol>
-      <li v-for="(value, key) in templates" :key="key">
-        <a :href="generateUrl(value)">{{ value }}</a>
-      </li>
-    </ol>
-  </div>
+<!-- Added the missing app div -->
+<div id="app">
+  <div id="content">
+    <div id="list-section">
+      <h1>All with local code</h1>
+      <h2>id=1237363106</h2>
+      <ol>
+        <li v-for="(value, key) in templates" :key="key">
+          <a :href="generateUrl(value)">{{ value }}</a>
+        </li>
+      </ol>
+    </div>
 
-  <div id="position-section">
-    <div id="position-block">
-      <a v-for="position in positions" 
-         :href="generateUrlWithPosition(position)" 
-         :class="['position-link', position]" 
-         :key="position">
-        Position: {{ position }}
-      </a>
+    <div id="position-section">
+      <div id="position-block">
+        <a v-for="position in positions" 
+           :href="generateUrlWithPosition(position)" 
+           :class="['position-link', position]" 
+           :key="position">
+          Position: {{ position }}
+        </a>
+      </div>
     </div>
   </div>
 </div>
