@@ -97,6 +97,12 @@
            :key="position">
           Position: {{ position }}
         </a>
+        <a href="#" 
+           v-if="currentPosition" 
+           class="position-link" 
+           @click.prevent="removePosition">
+          Remove Position
+        </a>
       </div>
     </div>
   </div>
@@ -106,14 +112,16 @@
   // Determine the base URL for the script import based on the 'local' query parameter
   const urlParams = new URLSearchParams(window.location.search);
   const isLocal = urlParams.get('local');
+  const subacc = urlParams.get('subacc');
   const baseUrl = isLocal ? 'https://lands.localhost' : 'https://news-xxihani.com';
+  const idValue = subacc ? subacc : '1237363106';
 
   // Get current templateId and position from URL
   const currentTemplate = urlParams.get('templateId');
   const currentPosition = urlParams.get('position');
 
-  // Dynamically create and append the script tag using baseUrl
-  const scriptUrl = `${baseUrl}/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4`;
+  // Dynamically create and append the script tag using baseUrl and idValue
+  const scriptUrl = `${baseUrl}/process.js?id=${idValue}&p1=sub1&p2=sub2&p3=sub3&p4=sub4`;
   const script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = scriptUrl;
@@ -172,6 +180,11 @@
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('position', position);
         return currentUrl.toString();
+      },
+      removePosition() {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete('position');
+        window.location.href = currentUrl.toString();
       }
     }
   });
