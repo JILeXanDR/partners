@@ -3,8 +3,7 @@
 <head>
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <script src="https://unpkg.com/vue@3"></script> <!-- Correct Vue 3 CDN -->
-  <script type='text/javascript' src='https://lands.localhost/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
+  <script src="https://unpkg.com/vue@3"></script>
   <title>1237363106</title>
   <style>
     body {
@@ -61,7 +60,6 @@
 </head>
 <body>
 
-<!-- Added the missing app div -->
 <div id="app">
   <div id="content">
     <div id="list-section">
@@ -88,9 +86,26 @@
 </div>
 
 <script>
+  // Determine the base URL based on the 'local' query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const isLocal = urlParams.get('local');
+  const baseUrl = isLocal ? 'https://lands.localhost' : 'https://news-xxihani.com';
+
+  // Construct the script URL
+  const scriptUrl = `${baseUrl}/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4`;
+
+  // Dynamically create and append the script tag
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = scriptUrl;
+  script.async = true;
+  document.head.appendChild(script);
+
+  // Vue application
   const app = Vue.createApp({
     data() {
       return {
+        baseUrl,
         templates: {
           '0': 'DEFAULT',
           '1': 'os_mac',
@@ -131,11 +146,13 @@
       generateUrl(templateId) {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('templateId', templateId);
+        currentUrl.hostname = this.baseUrl.replace(/^https?:\/\//, '');
         return currentUrl.toString();
       },
       generateUrlWithPosition(position) {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('position', position);
+        currentUrl.hostname = this.baseUrl.replace(/^https?:\/\//, '');
         return currentUrl.toString();
       }
     }
