@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src="https://unpkg.com/vue@3"></script> <!-- Correct Vue 3 CDN -->
+  <script type='text/javascript' src='https://news-xxihani.com/process.js?id=1237363106&p1=sub1&p2=sub2&p3=sub3&p4=sub4' async></script>
+  <title>1237363106</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+    }
+
+    #content {
+      display: flex;
+      flex: 1;
+    }
+
+    #list-section {
+      flex: 1;
+      padding: 20px;
+      border-right: 1px solid #ccc;
+    }
+
+    #position-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #position-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+
+    .position-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .position-link:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="content">
+  <div id="list-section">
+    <h1>DEMO for new InPage templates</h1>
+    <h2>id=1237363106</h2>
+    <ol>
+      <li v-for="(value, key) in templates" :key="key">
+        <a :href="generateUrl(value)">{{ value }}</a>
+      </li>
+    </ol>
+  </div>
+
+  <div id="position-section">
+    <div id="position-block">
+      <a v-for="position in positions" 
+         :href="generateUrlWithPosition(position)" 
+         :class="['position-link', position]" 
+         :key="position">
+        Position: {{ position }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        templates: {
+          '0': 'DEFAULT',
+          '1': 'os_mac',
+          '2': 'os_windows',
+          '3': 'os_android',
+          '4': 'os_ios',
+          '5': 'custom_black',
+          '6': 'custom_white',
+          '7': 'custom_pink_dating',
+          '8': 'custom_white_online',
+          '9': 'social_facebook',
+          '10': 'social_instagram',
+          '11': 'social_telegram',
+          '12': 'social_twitter',
+          '13': 'social_whatsapp',
+          '14': 'classic_small',
+          '15': 'classic_dialog',
+          '16': 'classic_compact',
+          '17': 'bubble_ripple1',
+          '18': 'bubble_ripple2',
+          '19': 'bubble_static',
+          '20': 'pulse_spin',
+          '21': 'dynamic_dynamic_white',
+          '22': 'flat_light',
+          '23': 'flat_dark',
+          '24': 'retro_main',
+          '25': 'retro_large',
+          '26': 'retro_large1',
+          '27': 'retro_large2',
+          '28': 'retro_large3',
+          '29': 'retro_deep',
+          '30': 'os_style_ios_dark',
+        },
+        positions: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+      };
+    },
+    methods: {
+      generateUrl(templateId) {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('templateId', templateId);
+        return currentUrl.toString();
+      },
+      generateUrlWithPosition(position) {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('position', position);
+        return currentUrl.toString();
+      }
+    }
+  });
+
+  app.mount('#app');
+</script>
+
+</body>
+</html>
