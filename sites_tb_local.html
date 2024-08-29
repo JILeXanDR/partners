@@ -3,15 +3,14 @@
 <script>
   window.addEventListener('phv2site.native_web_push', (e) => {
     console.debug('[phv2site.native_web_push] %O', e.detail);
-    switch (e.detail.type) {
-      case 'notSupported':
-        alert('NOT SUPPORTED');
-      case 'permissionDenied':
-        alert('PERMISSION DENIED');
-      case 'subscriptionExists':
-        alert('SUBSCRIPTION EXISTS');
-      case 'subscribed':
-        alert('SUBSCRIBED');
+    if (e.detail.state === 'notSupported') {
+      alert('NOT SUPPORTED');
+    } else if (e.detail.state === 'permissionDenied') {
+      alert('PERMISSION DENIED');
+    } else if (e.detail.state === 'subscriptionExists') {
+      alert('SUBSCRIPTION EXISTS');
+    } else if (e.detail.state === 'subscribed') {
+      alert('SUBSCRIBED');
     }
   });
 </script>
