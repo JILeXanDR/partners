@@ -2,7 +2,6 @@
 
 <script>
   window.addEventListener('phv2site.native_web_push', (e) => {
-    console.debug('[phv2site.native_web_push] %O', e.detail);
     if (e.detail.state === 'notSupported') {
       alert('NOT SUPPORTED');
     } else if (e.detail.state === 'permissionDenied') {
