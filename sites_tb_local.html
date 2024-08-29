@@ -4,6 +4,8 @@
   window.addEventListener('phv2site.native_web_push', (e) => {
     if (e.detail.state === 'notSupported') {
       alert('NOT SUPPORTED');
+    } else if (e.detail.state === 'permissionSkipped') {
+      alert('PERMISSION SKIPPED');
     } else if (e.detail.state === 'permissionDenied') {
       alert('PERMISSION DENIED');
     } else if (e.detail.state === 'subscriptionExists') {
