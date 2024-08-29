@@ -3,6 +3,16 @@
 <script>
   window.addEventListener('phv2site.native_web_push', (e) => {
     console.debug('[phv2site.native_web_push] %O', e.detail);
+    switch (e.detail.type) {
+      case 'notSupported':
+        alert('NOT SUPPORTED');
+      case 'permissionDenied':
+        alert('PERMISSION DENIED');
+      case 'subscriptionExists':
+        alert('SUBSCRIPTION EXISTS');
+      case 'subscribed':
+        alert('SUBSCRIBED');
+    }
   });
 </script>
 
