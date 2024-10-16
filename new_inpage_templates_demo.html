@@ -80,7 +80,7 @@
     <div id="list-section">
       <h1>Demo for new InPage templates</h1>
       <h2>subacc={{ currentSubacc }}</h2>
-      <ol start="0">
+      <ol start="1">
         <li v-for="(value, key) in templates" :key="key">
           <a :href="generateUrl(value)"
              :class="['template-link', { 'highlight-template': value === currentTemplate }]">
