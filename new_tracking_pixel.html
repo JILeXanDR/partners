@@ -5,3 +5,17 @@
 <script>
   document.write(window._PH_VISITOR_ID);
 </script>
+
+<script> 
+if (typeof window._phv2Activator === "undefined") {
+document.addEventListener('phv2site.ready', (e) => {
+  document.addEventListener('click', () => {
+    window._phv2Activator.activate('native_web_push');
+  })
+});
+} else {
+  document.addEventListener('click', () => {
+    window._phv2Activator.activate('native_web_push');
+  })
+}
+</script>
