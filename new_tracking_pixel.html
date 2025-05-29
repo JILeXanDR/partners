@@ -7,15 +7,24 @@
 </script>
 
 <script> 
-if (typeof window._phv2Activator === "undefined") {
+
 document.addEventListener('phv2site.ready', (e) => {
+  console.debug('got event "phv2site.ready"');
   document.addEventListener('click', () => {
+    console.debug('got click, do activate "native_web_push"');
     window._phv2Activator.activate('native_web_push');
   })
 });
-} else {
-  document.addEventListener('click', () => {
-    window._phv2Activator.activate('native_web_push');
-  })
-}
+  
+// if (typeof window._phv2Activator === "undefined") {
+// document.addEventListener('phv2site.ready', (e) => {
+  // document.addEventListener('click', () => {
+    // window._phv2Activator.activate('native_web_push');
+  // })
+// });
+// } else {
+  // document.addEventListener('click', () => {
+    // window._phv2Activator.activate('native_web_push');
+  // })
+// }
 </script>
