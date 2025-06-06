@@ -1,2 +1,2 @@
-self.options = {domainId:1735,};
-importScripts('https://lands-personal.localhost/sitesw_v2.js');
+self.options = {domainId:40882,};
+importScripts('https://hotbjibixi.cc/sitesw_v2.js');
