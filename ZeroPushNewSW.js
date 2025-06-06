@@ -1,1 +1,0 @@
-importScripts('https://news-vepoya.com/sw.js');
